@@ -52,10 +52,6 @@ function game(){
         if (result == 'You Win!') {
             pScore = pScore + 1;
         }
-        if (result == 'You Tie!') {
-            pScore = pScore + 1;
-            cScore = cScore + 1;
-        }
         if (result == 'You Lose!'){
             cScore = cScore + 1;
         }
