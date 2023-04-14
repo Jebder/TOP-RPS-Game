@@ -16,30 +16,19 @@ function getComputerChoice(){
 };
 
 function playRound(playerSelection, computerSelection){
-    if (playerSelection == 'rock') {
-        if (computerSelection == 'scissors'){
-            return 'You Win!'; }
-        else if (computerSelection == 'rock'){
-            return 'You Tie!';
-        }
-        else return 'You Lose!';
-        }
-    if (playerSelection == 'paper') {
-        if (computerSelection == 'rock'){
-            return 'You Win!'; }
-        else if (computerSelection == 'paper'){
-            return 'You Tie!';
-        }
-        else return 'You Lose!';
-        }
-    if (playerSelection == 'scissors') {
-        if (computerSelection == 'paper'){
-            return 'You Win!'; }
-        else if (computerSelection == 'scissors'){
-            return 'You Tie!';
-        }
-        else return 'You Lose!';
-        }
+    let result;
+    switch (playerSelection) {
+        case 'rock':
+            result = computerSelection === 'scissors' ? 'You Win!' : 'You Lose!';
+            break;
+        case 'paper':
+            result = computerSelection === 'rock' ? 'You Win!' : 'You Lose!';
+            break;
+        case 'scissors':
+            result = computerSelection === 'paper' ? 'You Win!' :'You Lose!';
+            break;
+    }
+    return result;
 };
 
 function game(){
