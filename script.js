@@ -1,7 +1,6 @@
 function getComputerChoice(){
     let attack = '';
     let num = Math.floor(Math.random() * 3) +1;
-    console.log(num);
     if (num == 1){
         attack = 'rock';
     }
@@ -31,7 +30,7 @@ function playRound(playerSelection, computerSelection){
     return result;
 };
 
-function displayScore(pScore, cScore) {
+function updateScore(pScore, cScore) {
     const score = document.querySelector('#score');
     score.textContent = `${pScore} : ${cScore}`;
 };
@@ -42,15 +41,21 @@ function updateRound(roundNum) {
 };
 
 function game(){
-
     let playerSelection = '';
     let pScore = 0;
     let cScore = 0;
     const buttons = document.querySelectorAll('.button');
-    buttons.addEventListener('click', () => { })
-    for (let i = 0; i < 5; i++){
-
-    }
+// i = 1 in the loop so that we can pass it into the updateRound
+// function and update the round.
+    for (let i = 1; i < 6; i++){
+        updateRound(i);
+        updateScore(pScore, cScore);
+        buttons.forEach((button) => {
+            button.addEventListener('click',() => {
+                    playerSelection = button.dataset.key;
+                    playRound(playerSelection, getComputerChoice());
+                });
+        })
+    }return console.log('Yes')
 };
-
 game();
