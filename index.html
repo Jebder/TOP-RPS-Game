@@ -1,1 +1,37 @@
-<script src="scripts.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>RPS</title>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <h2>Round 1</h2>
+    <h3>Score</h3>
+    <div id="score">5 : 0</div>
+    <!-- Arena is where the RPS will take place visually.
+         Meaning, all the buttons, photos, ect...-->
+    <div class="arena">
+        <div id="playerBox">
+            <div id="player">Player</div>
+            <img id="playerChoiceImg" src="#">
+        </div>
+        <div id="vs">VS</div>
+        <div id="machineBox">
+            <div id="machine">Machine</div>
+            <img id="playerChoiceImg" src="#">
+        </div>
+    </div>
+    <div class="chooseWepTxt">Choose Weapon!</div>
+    <div class="weapons">
+        <button class="button" id="rock">rock</button>
+        <button class="button" id="paper">paper</button>
+        <button class="button" id="scissors">scissors</button>
+    </div>
+    <footer>Project by: Jebder - https://github.com/Jebder </footer>
+</body>
+</html>
