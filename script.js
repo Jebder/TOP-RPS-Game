@@ -10,7 +10,6 @@ function getComputerChoice(){
     else {
         attack = 'scissors';
     };
-    console.log(attack)
     return attack;
 };
 
@@ -37,25 +36,42 @@ function updateScore(pScore, cScore) {
 
 function updateRound(roundNum) {
     const score = document.querySelector('h2');
-    score.textContent = `Round ${roundNum}!`
+    score.textContent = `Round ${roundNum}!`;
 };
 
-function game(){
-    let playerSelection = '';
-    let pScore = 0;
-    let cScore = 0;
-    const buttons = document.querySelectorAll('.button');
-// i = 1 in the loop so that we can pass it into the updateRound
-// function and update the round.
-    for (let i = 1; i < 6; i++){
-        updateRound(i);
-        updateScore(pScore, cScore);
-        buttons.forEach((button) => {
-            button.addEventListener('click',() => {
-                    playerSelection = button.dataset.key;
-                    playRound(playerSelection, getComputerChoice());
-                });
-        })
-    }return console.log('Yes')
+function displayWinner(pScore, cScore) {
+    if (pScore === 5) {
+        const score = document.querySelector('#score');
+        score.textContent = `Player Wins!`;
+    }
+    else if (cScore === 5) {
+        const score = document.querySelector('#score');
+        score.textContent = `Machine Wins!`;
+    };
 };
-game();
+
+let playerSelection = '';
+let pScore = 0;
+let cScore = 0;
+let round  = 0;
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click',() => {
+            playerSelection = button.dataset.key;
+            const result = playRound(playerSelection, getComputerChoice());
+            if (result === 'You Win!') {
+                pScore += 1;
+                console.log(pScore + 'p')
+            }
+            else {
+                cScore += 1;
+                console.log(cScore + 'c')
+            }
+
+            round += 1;
+            updateRound(round);
+            updateScore(pScore,cScore);
+            displayWinner(pScore,cScore);
+    });
+});
