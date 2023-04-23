@@ -50,6 +50,19 @@ function displayWinner(pScore, cScore) {
     };
 };
 
+function resetGame() {
+    const weaponsDiv = document.querySelector('.weapons');
+    const resetButton = document.createElement('button');
+    resetButton.innerHTML = 'Reset Game';
+    weaponsDiv.innerHTML = '';
+    weaponsDiv.appendChild(resetButton);
+
+    // add event listener
+    resetButton.addEventListener('click', () => {
+        location.reload();
+    })
+  };
+
 let playerSelection = '';
 let pScore = 0;
 let cScore = 0;
@@ -69,9 +82,21 @@ buttons.forEach((button) => {
                 console.log(cScore + 'c')
             }
 
+            // end of round housekeeping.
             round += 1;
             updateRound(round);
             updateScore(pScore,cScore);
             displayWinner(pScore,cScore);
+            if (pScore === 5 || cScore === 5) {   
+                resetGame();
+            }            
     });
 });
+
+// Next step is to remove the listener so that the 3 buttons
+// cannot be clicked anymore. THen add a button that will allow
+// the player to reset the game and play again. 
+
+// May also wish to make the winner display different. 
+// could add a new element in html to do this or display a window
+// that will pop up at the end or something. 
